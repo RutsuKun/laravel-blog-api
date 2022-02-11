@@ -1,10 +1,10 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <h2 class="font-medium text-2xl">Laravel Blog - Sign Up</h2>
         </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-jet-validation-errors class="mb-4"/>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
@@ -47,14 +47,21 @@
             @endif
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
         </form>
+
+        <div class="flex flex-row justify-center items-center mt-5">
+
+            <span class="text-sm text-gray-600 hover:text-gray-900">
+                Already registered?
+            </span>
+
+            <x-jet-button class="ml-4" onclick="window.location.href = window.location.origin + '/login'">
+                {{ __('Signin') }}
+            </x-jet-button>
+        </div>
     </x-jet-authentication-card>
 </x-guest-layout>
