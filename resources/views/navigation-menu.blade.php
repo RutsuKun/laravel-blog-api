@@ -22,9 +22,22 @@
                         </x-jet-nav-link>
                     @endcan
 
-                    <x-jet-nav-link href="{{ route('posts') }}" :active="request()->routeIs('posts')">
-                        {{ __('Posts') }}
-                    </x-jet-nav-link>
+                    @can('permissions:access')
+                        <x-jet-nav-link href="{{ route('permissions.index') }}"
+                                        :active="request()->routeIs('permissions.index')">
+                            {{ __('Permissions') }}
+                        </x-jet-nav-link>
+                    @endcan
+
+                    @can('roles:access')
+                        <x-jet-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
+                            {{ __('Roles') }}
+                        </x-jet-nav-link>
+                    @endcan
+
+                    {{--                    <x-jet-nav-link href="{{ route('posts') }}" :active="request()->routeIs('posts')">--}}
+                    {{--                        {{ __('Posts') }}--}}
+                    {{--                    </x-jet-nav-link>--}}
                 </div>
             </div>
 

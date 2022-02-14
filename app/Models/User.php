@@ -62,10 +62,21 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'all_roles',
     ];
+
 
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * Get roles.
+     *
+     */
+    public function getAllRolesAttribute(): Collection
+    {
+        return $this->roles()->select('title')->get()->pluck('title');
     }
 }

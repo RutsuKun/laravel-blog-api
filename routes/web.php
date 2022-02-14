@@ -19,7 +19,9 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('users', UserController::class);
+    Route::resource('users', \App\Http\Controllers\UserController::class);
+    Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
+    Route::resource('roles', \App\Http\Controllers\RoleController::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
