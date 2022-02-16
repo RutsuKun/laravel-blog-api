@@ -35,9 +35,11 @@
                         </x-jet-nav-link>
                     @endcan
 
-                    {{--                    <x-jet-nav-link href="{{ route('posts') }}" :active="request()->routeIs('posts')">--}}
-                    {{--                        {{ __('Posts') }}--}}
-                    {{--                    </x-jet-nav-link>--}}
+                    @can('posts:access')
+                        <x-jet-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
+                            {{ __('Posts') }}
+                        </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 

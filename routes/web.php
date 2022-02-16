@@ -22,17 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
     Route::resource('roles', \App\Http\Controllers\RoleController::class);
+    Route::resource('posts', \App\Http\Controllers\PostController::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-
-// Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
-
-// })->name('users');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/posts', function () {
-    return view('blog/posts/list');
-})->name('posts');
